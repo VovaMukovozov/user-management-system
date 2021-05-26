@@ -23,7 +23,7 @@ User Management is a simple web application for creating new users.
 - use-web-ui is react web application
 
 ## Installation
-- Git clone `git clone https://github.com/nvm-sh/nvm.git .nvm`
+- Git clone `git git@github.com:VovaMukovozov/user-management-system.git`
 - Go to project and install all npm dependencies
 
 ```
