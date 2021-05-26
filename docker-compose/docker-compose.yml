@@ -1,0 +1,77 @@
+version: "3.4"
+
+networks:
+  bridge:
+    driver: bridge
+
+services:
+  users-service:
+    command: bash -c "npm run debug"
+    container_name: users-service
+    build: ../users-service/
+    restart: always
+    networks:
+      bridge:
+        aliases:
+          - user-service.local
+    volumes:
+      - '../users-service/:/usr/src/app'
+      - '/usr/src/app/node_modules/bcrypt/'
+    ports:
+      - '3001:3000'
+      - '3343:3343'
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DEBUG_PORT=3343
+    env_file:
+      - pg.env
+    depends_on:
+      - pg
+      - db-schema
+
+  users-web-ui:
+    container_name: users-web-ui
+    build: ../users-web-ui/
+    restart: always
+    networks:
+      bridge:
+        aliases:
+          - users-web-ui.local
+    volumes:
+      - '../users-web-ui/:/usr/src/app'
+    ports:
+      - '3000:3000'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+      - PORT=3000
+
+  db-schema:
+    container_name: db-schema
+    build: ../db-schema/
+    restart: on-failure
+    networks:
+      bridge:
+        aliases:
+          - db-schema.local
+    env_file:
+      - pg.env
+    depends_on:
+      - pg
+
+  pg:
+    image: postgres
+    container_name: "pg"
+    restart: always
+    networks:
+      bridge:
+        aliases:
+          - pg.local
+    env_file:
+      - pg.env
+    ports:
+      - '5432:5432'
+    volumes:
+      - './pg-data:/var/lib/postgresql/data/'
+

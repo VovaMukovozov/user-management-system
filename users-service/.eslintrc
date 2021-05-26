@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "blockBindings": true
+    }
+  },
+  "env": {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "extends": "airbnb-base/legacy",
+  "rules": {
+    "semi": ["error", "never"],
+    "radix": ["off"],
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "max-len": ["off"],
+    "no-shadow": ["off"],
+    "arrow-parens": ["error", "as-needed"],
+    "import/prefer-default-export": ["off"],
+    "consistent-return": ["off"],
+    "comma-dangle": ["error", "always-multiline" ],
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }]
+  }
+}

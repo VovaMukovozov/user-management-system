@@ -1,0 +1,16 @@
+{
+  "name": "db-schema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate:latest": "./node_modules/.bin/knex migrate:latest",
+    "migrate:rollback": "./node_modules/.bin/knex migrate:rollback"
+  },
+  "author": "Vova Stern",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.95.6",
+    "pg": "^8.6.0"
+  }
+}

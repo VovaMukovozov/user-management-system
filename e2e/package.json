@@ -1,0 +1,17 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:reset:users": "node db/dropUsers.js",
+    "cypress:open": "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^7.4.0",
+    "knex": "^0.95.6",
+    "pg": "^8.6.0"
+  }
+}

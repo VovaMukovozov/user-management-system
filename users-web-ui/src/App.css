@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.new-user {
+  padding-top: 20px;
+}
+
+.user-table {
+  height: 400px;
+  width: 100%
+}
